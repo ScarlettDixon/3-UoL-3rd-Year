@@ -1,0 +1,48 @@
+W4 16/10/18
+
+Scenario 1:
+An employee used a laptop to work on in the office and regularly took it home. Recently they have
+been working on some sensitive data which had been copied from the main file server. The data
+included names, addresses, contact information including some email addresses, amounting to 15
+million records.
+What should be done to ensure this does not happen again?
+	Encrypt the information
+	Files should not be able to work outside the office
+	Work collaboratively online to do the work
+		
+
+Scenario 2:
+An employee in a very stressful and extremely busy job falls foul of a phishing attack and submits
+information including their password. The company has a password policy, but it only states the
+length and characters that can be used, so is useless in this instance. What should a robust policy
+contain?
+	Do not give away your password
+	If the password is given away, change password and inform security detail
+	Only send personal detail in line with the sharing guidelines
+	
+
+Scenario 3
+An employee uses social media to advertise almost everything in their life. This includes posting a
+constant stream of photographs which include children; posting every place they visit and what they
+have been doing and ranting about their employer to friends, family and colleagues. They are also
+happy to accept the majority of friend requests even though they do not know them. What are the
+dangers associated with these kinds of activities?
+	Having important or secret data in online their streams
+	Accepting a malicious hacker as a friend and them using the social media data to commit an attack
+	Giving away geolocation information, rob their home
+	Can find out who your family and friends are, identity theft
+	Posting rants against employer, can get fired
+	Beware of privacy features
+	understand what data is being posted about you
+	
+	 
+
+Part 2
+The university careers service have an interesting tool that allows you scrap information from social
+media sites about yourself.
+The link is on the My Careers page on Blackboard. The tool is called Am I hired. Login using one of
+your social media sites. The tool pulls through the information you have on your public accounts into
+one social media profile. It’s the kind of tool that employers will use to look at candidates before
+interviewing or hiring them.
+
+Isolate new services until you know they are full of spam

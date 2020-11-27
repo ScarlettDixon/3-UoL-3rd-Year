@@ -1,0 +1,85 @@
+Lookup 'Thedude'
+W3a: Nmap
+
+What does the switch -A do?
+Found the OS, version detection, script scannin and traceroute
+
+What does the switch -T4 do?
+Does faster execution by limiting the time on specific ports
+
+a. enter command "nmap -A -T4 localhost"
+b.Review results
+which ports and services are opened?
+ports: 21, 22, 23, 80
+services:ftp, ssh, telnet, http
+
+for each of the open ports, record the software that is providing the services
+ftp - vsftpd 2.0.8
+ssh - openssh 7.4
+telnet - Openwall GNU/*/Linux telnetd
+http - nginx/1.12.0
+
+what is the operating system
+Linux
+
+W3b: Wireshark Topology
+sudo ~/lab.support.files/scripts/cyberops_topo.py
+xterm H1; ifconfig
+xterm H2; ifconfig
+
+H1: IP address = 10.0.0.11 MAC Address = 0e:a2:82:c6:40:fe
+H2: IP address = 10.0.0.12 MAC Address = ba:9d:19:dc:17:c6
+
+xterm H1; wireshark-gtk &; hit start; back to H1; ping -c 5 10.0.0.12; hit stop
+type icmp in wireshark filter and apply;
+Click first PDU, then go to middle section;
+
+Does Source MAC match H1's interface? Yes same MAC
+Does the Destination MAC address in Wireshark match H2’s MAC address? Yes same MAC
+
+xterm H4; ifconfig
+xterm R1; ifconfig
+
+H4: IP address = 172.16.0.40 MAC Address = 4a:d7:be:17:14:77
+R1-eth1: IP address = 10.0.0.1 MAC Address = 4a:75:be:f4:06:07
+R1-eth2: IP address = 172.16.0.1 MAC Address = 8a:95:f2:ef:7e:e4
+
+New wireshark on H1: capture > start, start, Ctrl-E
+ping -c 5 172.16.0.40
+
+Destination IP and MAC Address - request:
+IP - 172.16.0.40 (H4)
+MAC - 4a:75:be:f4:06:07 (R1)
+
+quit mininet: quit
+cleanup : sudo mn -c
+
+W3c: Wireshark ethernet frames
+What is significant about the contents of the destination address field?
+It is a broadcast so it was sent out to all devices on the network not just one
+Why does the PC send out a broadcast ARP prior to sending the first ping request?
+This is to discover where the device is so that the data isn't sent aorund to every user
+What is the MAC address of the source in the first frame?
+f4:8c:50:62:62:6d
+What is the Vendor ID (OUI) of the Source’s NIC?
+f4:8c:50
+What portion of the MAC address is the OUI?
+The first six hex numbers
+What is the Source’s NIC serial number?
+62:62:6d
+
+
+xterm H3; ifconfig
+H3: IP address = 10.0.0.13 MAC Address = b2:46:19:18:c9:85
+What is the IP address of the default gateway for the host H3? 10.0.0.1
+arp -n; arp -d IP-address
+What is the MAC address of the PC’s NIC? b2:46:19:18:c9:85
+What is the default gateway’s MAC address? ba:31:bb:e5:43:6c
+What type of frame is displayed? IPv4
+
+
+Rest of workshop is basically trying to show you that the MAC Address changes
+depending on if it has to go through other devices (e.g.router) to get there
+
+Wireshark does not display the preamble field of a frame header. 
+What does the preamble contain? 

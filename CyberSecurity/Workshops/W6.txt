@@ -1,0 +1,18 @@
+
+Workshop 6
+
+macchanger eth0
+08:00:27:d6:8c:e1
+macchanger -r eth0 //random mac address
+12:0c:a8:be:df:6a
+macchanger -a eth0 //random mac address in list of vendors
+macchanger -p eth0 //reset to original mac address
+
+
+Workshop 6a
+
+Two IP Addresses in SQL injection attack
+10.0.2.15
+10.0.2.4
+The Version
+5.7.12-0ubuntu1.1
