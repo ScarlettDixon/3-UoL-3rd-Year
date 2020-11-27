@@ -1,0 +1,33 @@
+Sprint PLanning
+Scrum team - agrees upon a sprint goal
+Development team - determines specific PBIs
+
+Process: 
+    Inputs - Product Backlog, velocity, team capabilities, constraints, initial sprint goal
+    Intermediate - sprint planning
+    output - sprint goal, sprint backlog
+
+Sprint execution:
+    Inputs - sprint goal, sprint backlog
+    intermediate - Daily scrum + sprint execution
+    output - Potentially shippable product
+
+Task Planning:
+    just-in-time task-level planning as needed
+
+Flow Management:
+    Manage the flow of work - what works for the situation
+    Parallel work and swarming
+    Work on highest priority or are there constraints in play?
+    Team and product owner discuss what tasks are to be done
+    
+Sprint retrospective:
+    Define focus - ways to improve and develop a better product
+    Approach - Discuss questions
+
+
+
+Software Engineering Ethics
+Trying to attain a good life
+Ethical obligations - safety, health, welfare
+

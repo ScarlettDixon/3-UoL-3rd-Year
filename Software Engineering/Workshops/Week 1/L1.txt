@@ -1,0 +1,39 @@
+27/09/18
+
+Tutors
+Mark Doughty Tuesdays - 11:00-13:00 
+Mingjun Zhong Wednesday - 14:00-16:00 
+
+Assessments
+Exam - 40% 4 or 5 questions in multiple parts, analyse evaluate critique
+Assignment - 60% group based but individually assessed
+Will be mock exams and feedback
+
+Outline
+Domain modelling
+Software methodologies
+Design patterns
+Ethics
+Open source software
+Component reuse
+Testing
+Software engineering principles
+Standards
+
+Release package
+Development environment
+Sample code
+Documentation
+
+Ethics
+Social and Legal Framework
+Professional Responibility
+
+Key Challenges
+Understandability
+Coping with increased demands
+Cost - 60% dev, 40% cost tests
+
+Installation
+Maintenance
+Updates

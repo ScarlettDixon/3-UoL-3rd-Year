@@ -1,0 +1,48 @@
+ATM Waterfall
+
+Requirements Analysis:
+	A user arrives at an ATM, they enter their bank card into the machine and enter their PIN, this is checked against
+	the Database on file to see if the account is legitimate and consistent with the system. If all is correct the 
+	user gains access to a number of features including viewing the Account balance, Depositing or withdrawing money 
+	and receiving a receipt with details of the account process that have occurred
+	
+	User with credit card is needed for functions to start
+	User must own a bank account and have it linked to card being used
+	User enters a PIN, if correct gains access to functions
+	Can:
+		View Balance/ receipt
+		Withdraw money
+		Deposit money
+		Change PIN
+		Transfer money
+	
+System and Software Design
+	Software:
+		Database interaction (Compare accounts to user input/card)
+		Encrypted connection
+		Secure variables
+		User Interfacing (Abstracted for the user)
+	
+	Hardware:
+		PIN Pad
+		Card slot
+		Screen
+		Cash slot
+		Receipt Slot
+
+Implementation
+/*interface ATMintrfce{
+public obj choices;
+public string input;
+void callAccount();
+
+
+}
+	
+	
+private class Account implements ATMintrfce{
+	int balance();	
+		
+} */
+
+Given a task and critiquing the options available, making a more educated design choices

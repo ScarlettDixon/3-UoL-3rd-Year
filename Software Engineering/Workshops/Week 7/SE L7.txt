@@ -1,0 +1,24 @@
+Software Engineering L7
+
+    Exam Questions - Evaluating sytsems
+    Agile Manifesto - Drawbacks/critical assessment
+    Ian Sommerville on Blackboard - videos
+    
+Software Reuse:
+    Has been focussed on original developments
+    Better cheaper and efficient code when reused
+    Major shift towards this in last 10-15 years
+    Accidental reuse - using something for a task they weren't designed for
+    Planned reuse - Reusable components are built e.g. Code libraries, API's etc
+    Application reuse - whole app can be reused
+    Components reuse - Pieces can be reused
+    Object/Function reuse - single, well defined object or function can be reused
+    Benefits - Dependability, Time, Reduced Risk
+    Problems - Maintenance costs, NIMBY 
+    
+Department for Transport Share Services Centre
+NHS National Program for IT
+
+CBSE - Component Based Software Engineering
+    Relies on the reuse of software components
+    OOP failed to support effective reuse

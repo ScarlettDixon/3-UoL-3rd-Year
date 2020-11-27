@@ -1,0 +1,35 @@
+Verbs:
+Roll
+Pay
+Buy
+Move
+Pickup
+Go
+Sell
+Bid
+
+Nouns:
+Money/ Denominations
+Property/Utilities/Stations
+Pieces
+Jail
+Cards
+Houses/Hotel
+Dice
+Taxes
+Go
+Rules
+Free Parking
+
+Monopoly:
+Buy, sell and make profit (Capitalistic tendencies)
+
+
+Conceptual Classes:
+
+Banker - Money, Rules, Houses/Hotels, 
+Players - Pieces, Money, Property, dice
+Board - Go, Propery, Jail, Cards, Money, Free Parking, Taxes 
+Cards - Taxes, Go
+Money - Denominations
+

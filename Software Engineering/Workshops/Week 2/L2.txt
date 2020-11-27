@@ -1,0 +1,25 @@
+L2 04/10/18
+
+Convert photons to electrons
+convert electrons to voltage to binary
+
+Digitisation
+Sampling and quantization
+Sampling - lay a grid over an image, turn into matrix, 
+	smallest element from discretization is pixel
+	for 3-d element is called a voxel
+	gives spatial resolution
+Quantization - a discetization of the intesnity values
+	smallest change in intensity
+	gives intensity resolution
+	
+DPI and PPI
+Sampling usually not uniform, uses adaptive aswell
+Image Interpolation
+Resolution change - zoom, distort, rotate, repair
+using known data to estimate unkown values
+Nearest neighbour
+Bilinear 
+bicubic
+basics-spines
+ 

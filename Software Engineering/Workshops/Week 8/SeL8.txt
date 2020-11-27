@@ -1,0 +1,20 @@
+Software Engineering L8
+    
+    Design Patterns:
+        problem which occurs over and over
+        Can create features using patterns
+        Reuse it continously
+        Name, Problem Description, Solution, Consequences
+    Types:
+        Architectural Patterns - structural for software systems
+            Client-Server - One Server to multiple Clients
+            Peer-to-Peer - How nodes behave and how they interact
+            System/Network design
+        Design Patterns - Template for addressing design issues in software design
+            Creational - Classes and object instantiation
+                Builder - Seperate construction of a complex object from it's representation, same build process creates different representations
+                Prototype - Create new object by copying a Prototype
+                Singleton - Ensure a class has only one instance
+            Structural - Class/Object composition
+            Behavioural - Communications between objects
+        

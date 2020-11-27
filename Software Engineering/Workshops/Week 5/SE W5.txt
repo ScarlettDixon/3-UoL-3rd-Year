@@ -1,0 +1,50 @@
+Product Owner: ACME Software Ltd. - vision of what is to be created, dictator of backlog
+Scrummaster: guides team, follows own process based on product, key in narrowing the field
+Dev Team: Responsible for delivery, be collectively able tgo make product, split into 5-9 people
+Feature team: Collection of scrummasters from all teams
+
+
+Sprint 1:
+Take prioritized features and desiding what features to be implemebnted now and by whom - backlog
+Refine Product until priorities are in  manageable groups - grooming
+Follow through with design and implimentatiom - execution
+There are daily sprints to ensure they are kept on track
+Final product created by sprint - Potentially shippable product increment
+After sprint complet evaluate product - sprint review
+Inspect own work and evaluate what could be done better - retrospective
+
+Repeat until product is complete or until backlog is empty
+
+
+Backlog:
+	Backlog determined by product owner's vision, creates intitial priority list 
+Grooming:
+	Converting list into groupable tasks that need to be completed, transitioning to a technical backlog
+Sprint Planning:
+	Importance declared, taking entire backlog and making a specific sprint backlog with goals, broken down further into tasks
+Execution:
+	Majority of sprint, carrying out tasks and compoleting backlog for sprint
+Dialy Scrum:
+	peer standup meeting, work out how the execution is going on a dialy basis, daily review,
+review:
+	at the end of a sprint, everyone has a chance to review the product so far
+retrospective:
+	Use review and development observation to understand how to improve next sprint
+
+
+DEEP - Detailed Appropriately, Emergent, Estimated, Prioritized
+Detailed Appropriately
+	Not all items at the same level of detail
+	Near top of backlog: small in size, very detailed – can work on in
+near-term sprint
+	Larger in size, less detailed in bottom
+Emergent
+	Customer might change their mind
+	Designed to adapt to these occurrences
+Estimated
+	A size estimate to the effort required to develop them
+	Story point or ideal day estimates
+Prioritized
+	Prioritize the near-term items that are designed for the next few sprints
+
+

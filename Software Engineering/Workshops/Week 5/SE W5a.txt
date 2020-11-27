@@ -1,0 +1,59 @@
+Product Owner:
+ACME Software Ltd - Movie info client
+Product Backlog:
+	Client inferface app 
+	Connect to a webapi
+	Display film info based on provided film title
+	Film saved in a wishlist
+	
+
+Grooming:
+	UML creation
+	Domain Modelling
+	Choose a coding language 
+	Determine coding syntax
+	Create Functionality to query API
+	Allow input from user
+	Query API with user input
+	Design a UI
+	Display results on UI
+	Creation of wishlist functionality
+	
+Sprint Planning:
+	Sprint 1 Backlog: UML creation, Domain Modelling, Code Choice, Determine coding syntax
+	Tasks:
+		UML - Create User Story (Case Diagram), Break down story into tasks, noun and verb analysis, Create classes, 
+		Domain Modelling - Define domain objects and conceptual classes, define associations, attributes
+		Code Choice - weighing pros and cons, Create a test application using code of choice, 
+		Syntax - Naming conventions, tabs and spaces, commenting
+		
+	Sprint 2 Backlog:
+
+
+	
+Presentation:
+	Group Dynamics - 
+		Product Owner -  Sam Cleathero
+		Scrummaster - Daniel Dixon
+		Development Team - Everyone else
+		
+		Facilitation - 
+			Sam talked about what features were needed in the product, specifying it in simplistic terms
+			Daniel Pushed for work to be completed efficiently, giving technical advice
+			The Dev team researched suitable languages and helped create the technical aspects of this project
+				
+	Sprint - 
+		Completion - By creating specific tasks in the sprint backlog and dedicating planned time to development
+		Challenges - Issues occurred with attendance but work was then split between attending members
+		Product to Sprint Backlog - Tasks were chosen based on their necessity to starting development
+	
+	Tools and Toolsets - 
+		Tools for Scrum - Github, Discord, Messenger, Google Docs
+		Tool effectiveness - Github and Google Docs allowed efficient interaction, Discord was swapped for messenger for ease of access
+	
+	Evaluation - 
+		Scrum Management - Firm deadlines were sett for specified tasks, improvements could be made to attendance
+		Project Expectations - A finished product that has been thoroughly tested and evaluated
+		Sprint Pros + Cons - 
+			Adv - Sets boundaries for work and helps push development
+			Dis - Hard to set those boundaries correctly for the first sprint, Hard to evaluate without an intitial product

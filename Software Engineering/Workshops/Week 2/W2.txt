@@ -1,0 +1,16 @@
+Point of sale system:
+
+Arrival
+Start sale
+enter item
+record sale item
+present item description
+display price
+display total
+display total with VAT
+Customer told total
+asked for payment
+system logs sale
+stock update
+print reciept
+customer leaves
