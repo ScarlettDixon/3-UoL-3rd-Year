@@ -1,0 +1,52 @@
+https://github.com/LCAS/teaching/wiki/Turtlebots#connecting-to-the-robot-from-your-browser
+
+Quickstart robot
+Power on robot
+look here and load ip address shown: 
+https://docs.google.com/spreadsheets/d/e/2PACX-1vTfVDcI2Xwud7KN7wBpYEdFRzQcxuVWz6cW01zJrRe6InaBayX4VfgCsUzrAgGoyVPeJXlR7Hq5vmDy/pubhtml?gid=291043266&single=true
+http://10.82.0.102/
+
+
+On the webpage - 
+TMule Control: Takes you a control panel to launch different services on the robot, required to start the ROS system you are using on the robot by the click of a button
+    
+Jupyter: A full Python Notebook programming environment in your browser to directly program on the robots themselves.
+you can ignore VNC and blockly for now.
+    
+You can also download the VPN configuration to connect to the robot from any PC and use it in a distributed system
+
+After Gaining access
+
+    first click on "All Windows -> Check" to check what is already running
+    start roscore (and wait about 10 seconds for it to start)
+    start turtlebot drivers
+
+
+Programming:
+	Setting up a catkin packages:
+		Create an initial directory and a src directory below it
+		Go up to original directory and run catkin_make
+		source devel/setup.bash - display source info
+		$ echo $ROS_PACKAGE_PATH <filepath to source file>:/opt/ros/kinetic/share - put into filepath for easy execution
+	Creating the package:
+		Go to src
+		//run the command: catkin_create_pkg beginner_tutorials std_msgs rospy roscpp
+		rospack depends beginner_tutorials - shows all dependancies
+		roscd beginner_tutorials
+mkdir scripts
+cd scripts
+wget https://raw.github.com/ros/ros_tutorials/kinetic-devel/rospy_tutorials/001_talker_listener/talker.py
+chmod +x talker.py
+wget https://raw.github.com/ros/ros_tutorials/kinetic-devel/rospy_tutorials/001_talker_listener/listener.py
+chmod +x listener.py
+
+
+CodeTest1:
+	Go to location of python script, make sure 
+	rosrun turtlesim turtlesim_node
+	rostopic list
+	rostopic info /
+	python <name of python script> 
+
+CodeTest2:
+mobilebase/command/velocity

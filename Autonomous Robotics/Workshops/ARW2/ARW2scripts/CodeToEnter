@@ -1,0 +1,15 @@
+gedit ~/Downloads/rpi.ovpn
+#Edit the VPN Server Address to the Ip of your robot
+sudo openvpn ~/Downloads/rpi.ovpn
+wget https://raw.githubusercontent.com/marc-hanheide/network-scripts/master/ros-network.sh -P ~/
+#In every terminal run:
+source ~/ros-network.sh 192.168.2.1
+
+
+rostopic pub /turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, 1.8]'
+
+
+rostopic pub /mobile_base/commands/velocity geometry_msgs/Twist -r -- '[0.4, 0.0, 0.0]' '[0.0, 0.0, 1.8]'
+
+Publish to /mobile_base/commands/velocity on either machine or simulation
+need to add linear and angular twist data, x for linear, z for angular like in the command above

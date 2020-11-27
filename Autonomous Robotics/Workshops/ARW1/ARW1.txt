@@ -1,0 +1,39 @@
+roscore - ros+core, initial opening of manual ros
+rosnode list - display all usable nodes
+nodes - an executable
+rosnode info /[nameofnode] - gives information on the node
+rosrun [package_name] [node_name] - use package name to run node withing package, will then appear on rosnode list
+roslaunch kobuki_keyop keyop.launch - use key controls to move robot in real world or simulation
+
+Nodes: A node is an executable that uses ROS to communicate with other nodes.
+Messages: ROS data type used when subscribing or publishing to a topic.
+Topics: Nodes can publish messages to a topic as well as subscribe to a topic to receive messages.
+Master: Name service for ROS (i.e. helps nodes find each other)
+rosout: ROS equivalent of stdout/stderr
+roscore: Master + rosout + parameter server (parameter server will be introduced later)
+
+rosnode info /gazebo
+rosrun turtlesim turtlesim_node - creates the turtlesim simulation
+rosrun turtlesim turtle_teleop_key - allows interaction with the turtle in terminal
+rosrun rqt_graph rqt_graph - displays nodes and topics connecting them
+roslaunch turtlebot_gazebo turtlebot_world.launch world_file:=$(rospack find turtlebot_gazebo)/worlds/empty.world - Creates robot simulation
+roslaunch turtlebot_rviz_launchers view_robot.launch - visualising what the robot sees
+
+rostopic -h - help page for rostopic
+rostopic echo /turtle/cmd_vel - when turtle is moved, ths postitioning and movement is recorded
+refresh the graph and you will be shown a new topic has been initiated
+
+
+rostopic pub [topic] [msg_type] [args] - publish data on to a topic
+rostopic pub -1 /turtle1/cmd_vel geometry_msgs/Twist -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, 1.8]'
+-1 - publish only one message then exit
+-- - none of the following arguments is an option
+rostopic pub /turtle1/cmd_vel geometry_msgs/Twist -r 1 -- '[2.0, 0.0, 0.0]' '[0.0, 0.0, -1.8]'
+-r 1 - recursively completes the command at a rate of 1Hz
+
+rostopic hz [topic] - reports rate at which data is published
+rostopic hz /turtle1/pose - how fast the turtle node is publishing pose
+
+Odometry - 
+rostopic echo odom
+
