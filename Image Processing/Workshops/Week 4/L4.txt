@@ -1,0 +1,25 @@
+L4 18/10/18
+
+Gamma Correction - A Power-law response phenomenon
+Intensity Slicing - Highlighting a specific range of intensities 
+Low contrast histogram - narrow and centered on the middle of the gray scale
+Thresholding function - creates binary image
+
+Spatial Filtering
+	original image plus a filter mask
+	Process consists of moving filter mask from pixel to pixel
+	response of filter calculated using a predefined relationship
+	predefined relationship - linear or non-linear
+	linear - sum of products of filter coefficients and corresponding image pixels
+	mean of a neighbourhood
+	How to deal with edges? cropping, zero padding, extending, wrapping
+	
+	
+Gaussian Smoothing
+	Smoothing based on alpha
+	
+Order Statistic Filtering
+	Order the array
+	Calculate max, min, median and mode
+	Used in deep learning
+	

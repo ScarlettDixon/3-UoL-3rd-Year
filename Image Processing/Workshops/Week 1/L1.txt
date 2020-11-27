@@ -1,0 +1,39 @@
+27/09/18
+
+Objectives:
+Cover Basic Image Processing theory and algorithms
+Matlab
+hands-on experience
+critical thinking on the state of art
+
+Assessment 1 - coursework 50% - Demonstration after
+Assessment 2 - Exam 50%
+
+Digital Image - 2D matrix or function f(x,y)
+amplitude of f = intensity
+f(x,y) E [0,250]
+
+How clear depends on how you digitalize it - resolution = No of pixels
+limits of human vision - human eye resolutuion 576 megapixels
+How high can a resolution go before it is indistinguishable
+
+Used in a buncha of industries today
+
+Image Processing Applications
+Face and emotion detection 
+Surveillance
+Entertainment 
+Face Morphing
+Forensics
+Biometrics - Iris recognition
+Object Tracking and Recognition
+Sports - track players or equipment
+Medical - Electromagnetic energy spectrum
+
+Energy Sources
+Electromagnetic energy spectrum
+Acoustic
+Ultrasound
+
+Purpose
+Improvement of knowledge, transmission and detection

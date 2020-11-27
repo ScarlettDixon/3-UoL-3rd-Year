@@ -1,0 +1,53 @@
+A =
+[2 9 0 0
+ 0 4 1 4
+ 7 5 5 1
+ 7 8 7 4]
+
+b =
+[-1
+ 6
+ 0
+ 9]
+
+ a = [3 -2 4 -5
+
+1. Calculate the following (when defined), ‘T’ means transpose.
+(a) A . *b 
+	ans = 
+	[-2    -9     0     0
+     	 0    24     6    24
+     	 0     0     0     0
+    	 63    72    63    45]
+(b) a + 4
+	ans=
+	7     2     8    -1
+(c) b . *a
+	ans=
+	[-3     2    -4     5
+   	  18   -12    24   -30
+     	 0     0     0     0
+   	  27   -18    36   -45 ]
+(d) a . *bT 
+	ans=
+	[-3   -12     0   -45]
+(e) A . *aT
+	ans=
+	[6    27     0     0
+     	 0    -8    -2    -8
+    	 28    20    20     4
+   	 -35   -40   -35   -25]
+2. Explain any differences between the answers that MATLAB gives when you type
+in A*A, A^2 and A.^2.
+
+Both A*A and A^2 give the same answer, A.^2 gives different answer
+
+3. What is the command that isolates the submatrix that consists of the 2nd to 3rd
+rows of the matrix A?
+A(2:3) or 
+A(2:3, 1:4)
+
+4. Solve the linear system A x = b for x. Check your answer by multiplication.
+Edit your text file to delete any errors (or typos).
+x = A\b
+A*x = b
