@@ -1,0 +1,228 @@
+Algorithms for Data Mining Workshop 3: Maths for Regression
+
+[Vectors and Matrices in Python]
+
+Setup -
+	import numpy as np
+	import numpy.linalg as linalg
+	
+Vectors - 
+	a = np.array([1,0,2])
+	b = np.array([3,2,1])
+	a.shape - One dimensional vector
+	c = a + b - basic addition of vecotrs a and b
+	d = a.dot(c) - dot product of a and c
+	d - displays dot product [10]
+	
+Matrices - 
+	Create Matrices explicitly
+	A = np.array([[2, 1, 3], [1, 1 ,2]])
+	B = np.array([[2, 1], [1, 2], [5 ,2]])
+	A.shape, B.shape - displays shape of A and B [((2, 3), (3, 2))]
+	Create using stacked vectors
+	X = np.column_stack((a,b))
+	Y = np.row_stack((a,b))
+	X,Y - [(array([[1, 3],
+        [0, 2],
+        [2, 1]]), array([[1, 0, 2],
+        [3, 2, 1]]))]
+	Transpose and multiply
+	C = A + B.transpose()
+	D = C.dot(A.transpose()) # matrix product C * A
+	C,D - [(array([[4, 2, 8],
+        [2, 3, 4]]), array([[34, 22],
+        [19, 13]]))]
+	Multiply matrices with vectors
+	e = A.dot(a) # this corresponds to A * a
+	f = a.dot(B) # this corresponds to a^T * B
+	e, f - [(array([8, 5]), array([12,  5]))]
+	Compute inverse - 
+	import numpy.linalg as linalg
+	AA = A.dot(A.transpose()) # A * A^T ... we can only invert quadratic matrices
+	AAinv = linalg.inv(AA)
+	AA, AAinv - [(array([[14,  9],
+        [ 9,  6]]), array([[ 2.        , -3.        ],
+        [-3.        ,  4.66666667]]))]
+	Multiplying with the inverse needs to result in the Identity matrix being the same(from both sides)
+	AA.dot(AAinv), AAinv.dot(AA) -[(array([[1., 0.],
+        [0., 1.]]), array([[1., 0.],
+        [0., 1.]]))]
+	Compute A^-1*b in a more stable way using linalg.solve.
+	b = np.array([1, 2])
+	out1 = linalg.solve(AA, b)
+	out1 - [array([-4.        ,  6.33333333])]
+	
+[Excersise 1]
+Compute:
+(Aa−b)T(Aa−b)(Aa−b)T(Aa−b) ,
+(Cb)TC(Cb)TC 
+(CTC)−1CTa(CTC)−1CTa 
+
+Code:
+import numpy.linalg as linalg
+A = np.array([[1, 0, 1], [2, 3, 1]])
+C = np.array([[1, 0], [2, 3], [1, 5]])
+a = np.array([1,2,1])
+b = np.array([2,2])
+
+sol1 = (((A.dot(a) - b).transpose()).dot(((A.dot(a)) - b)))
+
+sol2 = ((C.dot(b)).transpose()).dot(C)
+
+sol3 = ((linalg.inv(C.transpose().dot(C))).dot(C.transpose().dot(a))) #Look into this not sure it's right
+
+sol1, sol2, sol3
+
+
+
+[Linear Regression in Matrix Form]
+
+Want a linear function to fit data in form:
+ŷ =β0+∑i βixi
+β0 = Offset, βi = slope for input
+
+ŷ in vector form:
+ŷ =β0 + xT β = x̃ T β̃
+
+β̃ = [β0 ... βd], x̃ = [1, x1 ... xd]
+
+Setup - 
+	import numpy as np
+	import numpy.linalg as linalg
+	import pandas as pd
+	import matplotlib.pyplot as plt
+	data_train = pd.DataFrame.from_csv('regression_train.csv')
+	data_test = pd.DataFrame.from_csv('regression_test.csv')
+	data_train
+
+Training - 
+	x_train = data_train['x'].as_matrix()
+	y_train = data_train['y'].as_matrix()
+	x_test = data_test['x'].as_matrix()
+	y_test = data_test['y'].as_matrix()
+	plt.clf()
+	plt.plot(x_train,y_train, 'bo')
+	plt.savefig('trainingdata.png')
+	plt.show() - plots data points
+	Xtilde = np.column_stack((np.ones(x_train.shape), x_train))
+	Xtilde - creating the x̃  matrix
+	   [array([[ 1.        ,  0.50797903],
+       [ 1.        ,  2.08147823],
+       [ 1.        , -2.09095261],
+       [ 1.        ,  0.10827605],
+       [ 1.        ,  3.92946954],
+       [ 1.        ,  3.96293089],
+       [ 1.        , -3.7441469 ],
+       [ 1.        , -2.92757122],
+       [ 1.        , -4.48532797],
+       [ 1.        , -0.59190156]])]
+
+
+[Excersise 2]
+Compute:
+Extend the plot with the prediction for hand-picked betas
+First, compute the data matrix Xtest_tilde for the test set (see code above how it is done for the training set).
+Reuse the plotting code from above
+Add the predicted line for β0=7 and β1=8  to the plot (use red line color, extend your legend
+
+Code:
+beta_0 = 7
+beta_1 = 6
+betatilde = np.array([beta_0, beta_1])
+
+Xtest_tilde = np.column_stack((np.ones(x_test.shape), x_test))
+ytest_hat = (Xtest_tilde).dot(betatilde) 
+
+plt.figure()
+plt.plot(x_test,ytest_hat, 'r')
+plt.plot(x_train,y_train, 'bo')
+plt.plot(x_test,y_test, 'g')
+plt.legend(('predictions', 'training points', 'ground truth'), loc = 'lower right')
+
+plt.savefig('regression_randomPrediction.png')
+
+Error Computation -
+To assess error, difference between the training points and the predictions
+yhat = Xtilde.dot(betatilde)
+error = y_train - yhat
+error
+Sum Squared error is calculated as by timesing the error with itself, scalar product?
+SSE = error.dot(error) # The scalar product is also implemented with the dot function (no need for transpose)
+SSE
+
+
+SSE Error Function - 
+[Excersise 3]
+def SSE(beta, x, y):
+    xt = np.column_stack((np.ones(x.shape), x))
+    yh = xt.dot(beta)
+    error = y - yh
+    SSE = error.dot(error) 
+    return SSE
+	
+[Excersise 4]
+beta_0 = -4.081632653061206
+beta_1 = 12.244897959183675
+betatilde2 = np.array([beta_0, beta_1])
+
+Xtest_tilde2 = np.column_stack((np.ones(x_test.shape), x_test))
+Xtrain_tilde2 = np.column_stack((np.ones(x_train.shape), x_train))
+ytest_hat2 = (Xtest_tilde2).dot(betatilde2) #For Plotting
+ytrain_hat2 = (Xtrain_tilde2).dot(betatilde2) #For Error
+error2 = y_train - ytrain_hat2
+SSE2 = error2.dot(error2)
+
+plt.figure()
+plt.plot(x_test,ytest_hat, 'b')
+plt.plot(x_test,ytest_hat2, 'r')
+plt.plot(x_train,y_train, 'bo')
+plt.plot(x_test,y_test, 'g')
+plt.legend(('predictions', 'training points', 'ground truth', SSE2), loc = 'lower right')
+plt.savefig('regression_betterPrediction.png')
+#SSE = 3020.93696
+
+Derivatives - 
+
+
+
+[Excersise 5+6]
+#v(x)=((x+4)**2)+(3*x**2)−((x−1)**2)
+def v(x):
+    return ((x+4)**2) + (3*(x**2)) - ((x-1)**2)
+
+def vd(x):
+    #x**2 + 8x + 16 + 3x**2 - x**2 + 2x - 1 
+    #= 3x**2 + 10x + 15 
+    return (6*x) + 10
+
+def minima():
+    #6x + 10 = 0, 6x = -10, x 
+    #= -10/6 
+    #= -1.666
+    return -1.666
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+plt.figure()
+x = np.linspace(-3, 3, num=100)
+mini = minima()
+plt.subplot(2,1,1)
+plt.plot(x, v(x))
+plt.ylabel('h(x)')
+plt.subplot(2,1,2)
+plt.plot(x, vd(x))
+plt.xlabel('x')
+plt.ylabel('hd(x)')
+plt.subplot(2,2,3)
+plt.plot(x, v(x))
+plt.plot(x, vd(x))
+plt.plot(mini, mini, 'bo')
+plt.xlabel('x')
+plt.ylabel('h(x) + hd(x)')
+
+
+plt.savefig('function_derivatives.png')
+
+
+

@@ -1,0 +1,19 @@
+Python:
+print() - display output
+type() - output variable type
+list() - used when copying
+var[num1:num2] - in list var display from index num1 to the index before num2
+import numpy as np - import package numpy and give it name np
+from math import radians - import the radians library from the math package
+np_list = np.array(list) - convert a normal list into a numpy array
+np_list.shape - the size of the array/s
+
+Addition for normal lists is different than numpy
+
+Can use an attribute of another list as the index fto searchb through the main list using numpy - 
+	Goals = np.array[1,2,3]
+	Players = np.array['pete', 'graham' , 'tiffany']
+	print(Players[Goals > 1])
+		Output: 'graham', 'tiffany'
+
+import matplotlib.pyplot as plt

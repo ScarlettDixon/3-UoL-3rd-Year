@@ -1,0 +1,270 @@
+Algorithms for Data Mining Workshop 2: Pandas and Plotting
+
+
+[Introduction to Pandas]
+
+Setup -
+	%matplotlib inline
+	import pandas as pd
+	import numpy as np
+
+	# Set some Pandas options
+	pd.set_option('notebook_repr_html', False)
+	pd.set_option('max_columns', 30)
+	pd.set_option('max_rows', 20)
+
+Series - 
+	Single vector of data, like a Numpy array but with an index that labels each element in the vector also
+	if not specified default index is 0 up
+	Values are a numpy array while index is pandas
+	
+	counts = pd.Series([632, 1638, 569, 115]) - creates series vector
+	counts - display entire series
+	counts.values - displays all of the values (array([ 632, 1638,  569,  115], dtype=int64))
+	counts.index - displays all of the index data (RangeIndex(start=0, stop=4, step=1))
+	
+	bacteria = pd.Series([632, 1638, 569, 115], index=['Firmicutes', 'Proteobacteria', 'Actinobacteria', 'Bacteroidetes'])
+		- assigning labels to the index
+	bacteria - display series
+	bacteria['Actinobacteria'] - find value associated to the index (569)
+	[name.endswith('bacteria') for name in bacteria.index] - returns true or false depending on if the index has bacteria in it
+		([False, True, True, False])
+	bacteria[[name.endswith('bacteria') for name in bacteria.index]] - finds all items in series ending with bacteria
+		(Proteobacteria    1638
+		Actinobacteria     569
+		dtype: int64)
+	bacteria[0] - positional indexing (632)
+	bacteria.name = 'counts' - give a name to the series
+	bacteria.index.name = 'phylum' - give a name to the index
+	np.log(bacteria) - Apply Logarithms to the values
+	bacteria[bacteria>1000] -  all values above 1000
+	
+	Can be though of as an ordered key-value store. In fact, we can create one from a dict:
+	bacteria_dict = {'Firmicutes': 632, 'Proteobacteria': 1638, 'Actinobacteria': 569, 'Bacteroidetes': 115}
+	pd.Series(bacteria_dict)
+	
+DataFrame - 
+	When wanting multiple fields per index a DataFrame is used, Tabular structure, encapsulating multiple series together
+	Data stores in 2D objects while allowing for higher-dimensional manipulation and representation
+	
+	data = pd.DataFrame({'value':[632, 1638, 569, 115, 433, 1130, 754, 555], 'patient':[1, 1, 1, 1, 2, 2, 2, 2], 'phylum':
+		['Firmicutes', 'Proteobacteria', 'Actinobacteria','Bacteroidetes', 'Firmicutes', 
+		'Proteobacteria', 'Actinobacteria', 'Bacteroidetes']}) - Adding data to the DataFrame
+	data[['phylum','value','patient']] - Rearrange column names
+    data.columns - second index, displays columns(Index(['value', 'patient', 'phylum'], dtype='object'))
+    data['value'] or data.value - display specific columns
+    type(data.value) or type(data[[value]]) - Show type of value (pandas.core.series.Series or pandas.core.frame.DataFrame)
+    data.ix[3] - indexing the fourth value, displays all columns at that index, depreciated and .loc or .iloc used instead
+        (value                115
+        patient                1
+        phylum     Bacteroidetes
+        Name: 3, dtype: object)
+	previous index is just a view of the DataFrame and not an actual copy
+    vals = data.value  -  creating a copy of the data values
+	data['year'] = 2013 - adds a new column year that has all values set to 2013
+	data.treatment = 1 - treatment doesn't exist so we don't create a new column just a singular treatment value
+	data.treatment - displays this singular data point (1)
+	treatment = pd.Series([0]*4 + [1]*2) - Create a new series containing four zeros then two ones
+	data['treatment'] = treatment - the treatment series is added to the DataFrame similar to the year series
+	Can't use other data structures without index, for example this causes errors:
+		month = ['Jan', 'Feb', 'Mar', 'Apr']
+		data['month'] = month
+	Wheras this works:
+		data['month'] = ['Jan']*len(data)
+	del data['month'] - removes a column
+	data.values - extract values column as an array, if mixture of types (e.g. string + int) dtype will be allocated as an object
+	Panda uses a custom data structure:
+		df = pd.DataFrame({'foo': [1,2,3], 'bar':[0.4, -1.0, 4.5]}) 
+		df.values - displayed as an array with two [[ brackets
+
+Importing Data - 
+	A key step is retrieving the data we wish to analyze. 
+	Teaching how to load complex data structures
+	Pandas provides convenient functions for importing data in a number of formats directly into a DataFrame object
+	Functions contain options for importing to perform type inference, indexing, parsing, iterating and cleaning automatically
+	genes = np.loadtxt("genes.csv", delimiter=",", dtype=[('gene', '|S10'), ('value', '<f4')])
+	!cat data/microbiome.csv - read the csv file, linux command
+	mb = pd.read_csv("data/microbiome.csv") - import into the script as a DataFrame, auto considers first row as headers
+	pd.read_csv("data/microbiome.csv", header=None).head() - override default behaviour, can be used on headers, names and index_col
+	mb = pd.read_table("data/microbiome.csv", sep=',') - read_csv is a convenient version of read_table, sep = seperator
+	pd.read_csv("data/microbiome_missing.csv").head(20) - displays missing or NA as either NaN or ?
+	pd.isnull(pd.read_csv("data/microbiome_missing.csv")).head(20) - displays errors as true values
+	pd.read_csv("data/microbiome_missing.csv", na_values=['?', -99999]).head(20) - 
+
+Pandas Fundamentals - 
+	baseball = pd.read_csv("data/baseball.csv", index_col='id') - Use id as a column index
+		[          player  year  stint team  lg   g  ab  r   h  X2b  X3b  hr  rbi   sb  \
+		 id                                                                              
+		 88641  womacto01  2006      2  CHN  NL  19  50  6  14    1    0   1  2.0  1.0   
+		 88643  schilcu01  2006      1  BOS  AL  31   2  0   1    0    0   0  0.0  0.0   
+		 88645  myersmi01  2006      1  NYA  AL  62   0  0   0    0    0   0  0.0  0.0   
+	 	 88649  helliri01  2006      1  MIL  NL  20   3  0   0    0    0   0  0.0  0.0   
+		 88650  johnsra05  2006      1  NYA  AL  33   6  0   1    0    0   0  0.0  0.0   
+
+				cs  bb   so  ibb  hbp   sh   sf  gidp  
+		id                                             
+		88641  1.0   4  4.0  0.0  0.0  3.0  0.0   0.0  
+		88643  0.0   0  1.0  0.0  0.0  0.0  0.0   0.0  
+		88645  0.0   0  0.0  0.0  0.0  0.0  0.0   0.0  
+		88649  0.0   0  2.0  0.0  0.0  0.0  0.0   0.0  
+		88650  0.0   0  4.0  0.0  0.0  0.0  0.0   0.0 ]
+	Create a unique index by combining player and year [e.g. womacto012006]
+		player_id = baseball.player + baseball.year.astype(str)
+		baseball_newind = baseball.copy()
+		baseball_newind.index = player_id
+		baseball_newind.head()
+	baseball_newind.index.is_unique - discovering if the index created is unique [false]
+	pd.Series(baseball_newind.index).value_counts() - 
+		shows how many times each index is shown, more than once for some as they have changed teams within a year
+	baseball_newind.loc['wickmbo012007'] - looks at index with that ID, returns two sets of data
+	Create a truly unique index by combining player, team and year [e.g. womacto01CHN2006]
+		player_unique = baseball.player + baseball.team + baseball.year.astype(str)
+		baseball_newind = baseball.copy()
+		baseball_newind.index = player_unique
+		baseball_newind.head()
+	baseball_newind.index.is_unique - shows that index is now unique [True]
+	Create meaningful indices using a hierarchical index talked about later
+	
+Indexing and Selection -
+	hits = baseball_newind.h - A Sample Series object
+	hits[:3] - Numpy-style indexing
+	hits[['womacto01CHN2006','schilcu01BOS2006']] - Indexing by label
+	hits['womacto01CHN2006':'gonzalu01ARI2006'] - slicing with data labels
+	hits['womacto01CHN2006':'gonzalu01ARI2006'] = 5 - set sliced values to 5
+	baseball_newind[['h','ab']] - previous index sliced via horizontal index labels rather than vertical
+	baseball_newind[baseball_newind.ab>500] - indexing by value range
+	baseball_newind.ix['gonzalu01ARI2006', ['h','X2b', 'X3b', 'hr']] -  select subsets of rows and columns
+	baseball_newind.ix[['gonzalu01ARI2006','finlest01SFN2006'], 5:8] - select columns 5 to 7 of two players
+	baseball_newind.ix[:'myersmi01NYA2006', 'hr'] - all players up to myers hr records
+	baseball_newind.xs('myersmi01NYA2006') - cross section method, extracts a single column or row by label and returns it as a Series
+	
+Operations -
+	Perform arithmetic on two objects -
+		hr2006 = baseball[baseball.year==2006].xs('hr', axis=1)
+		hr2006.index = baseball.player[baseball.year==2006]
+		hr2007 = baseball[baseball.year==2007].xs('hr', axis=1)
+		hr2007.index = baseball.player[baseball.year==2007]
+		hr2006 = pd.Series(baseball.hr[baseball.year==2006].values, index=baseball.player[baseball.year==2006])
+		hr2007 = pd.Series(baseball.hr[baseball.year==2007].values, index=baseball.player[baseball.year==2007])
+		hr_total = hr2006 + hr2007
+		hr_total
+		Places NaN values for labels that don't ovelap the two Series
+	hr_total[hr_total.notnull()] - displays those values in both datasets
+	hr2007.add(hr2006, fill_value=0) - fills NaN values with 0
+	baseball.hr-baseball.hr.max() - 
+        subtract maximum home runs from hr column to get how many fewer home runs they had
+	compare one value to all other values in the group
+        baseball.ix[89521]["player"] - 
+        stats = baseball[['h','X2b', 'X3b', 'hr']]
+        diff = stats - stats.xs(89521)
+        diff[:10]
+	stats.apply(np.median) -  calculate median of all rows
+	stat_range = lambda x: x.max() - x.min() - calulate range of value x
+	stats.apply(stat_range) - apply range formula to stats columns
+	Other Formula:
+        slg = lambda x: (x['h']-x['X2b']-x['X3b']-x['hr'] + 2*x['X2b'] + 3*x['X3b'] + 4*x['hr'])/(x['ab']+1e-6)
+        baseball.apply(slg, axis=1).apply(lambda x: '%.3f' % x)
+	
+Data summarization -
+	baseball.sum() - Addition
+	baseball.mean() - Average
+	baseball.describe() - Gives multiple stats
+	baseball.player.describe() - Gives multiple stats on specific series
+	
+Writing Data to Files -	
+	mb.to_csv("mb.csv") - export back to the csv file
+	to_csv writes DataFrame to CSV,
+	sep, na_rep, index, header and other options can be customised when writing
+
+	
+[Plotting and Visualization]	
+
+Setup -
+	%matplotlib inline
+	import pandas as pd
+	import numpy as np
+	import matplotlib as mpl
+	import matplotlib.pyplot as plt
+
+	# Set some Pandas options
+	pd.set_option('display.notebook_repr_html', False)
+	pd.set_option('display.max_columns', 20)
+	pd.set_option('display.max_rows', 25)
+	
+Matplotlib - 
+    plt.plot(np.random.normal(size=100), np.random.normal(size=100), 'ro') - 
+        plot a random graph with two sets of random numbers taken from a normal distribution
+        ro - red circle shorthand
+    Breaking a plot into a workflow, matplotlib is low-level, makes very few assumptions,
+    Provides a lot of flexibility, allows complete customisation
+        with mpl.rc_context(rc={'font.family': 'serif', 'font.weight': 'bold', 'font.size': 8}):
+        fig = plt.figure(figsize=(6,3))
+        ax1 = fig.add_subplot(121)
+        ax1.set_xlabel('some random numbers')
+        ax1.set_ylabel('more random numbers')
+        ax1.set_title("Random scatterplot")
+        plt.plot(np.random.normal(size=100), np.random.normal(size=100), 'r.')
+        ax2 = fig.add_subplot(122)
+        plt.hist(np.random.normal(size=100), bins=15)
+        ax2.set_xlabel('sample')
+        ax2.set_ylabel('cumulative sum')
+        ax2.set_title("Normal distrubution")
+        plt.tight_layout()
+        plt.savefig("normalvars.png", dpi=150)
+        
+Plotting in Pandas - 
+    Pandas provides DataFrame and Series object -
+        normals = pd.Series(np.random.normal(size=10))
+        normals.plot() - default line plot drawn
+        normals.cumsum().plot(grid=False) - calc cumulative sum 
+    DataFrame also allows these functionalities:
+        variables = pd.DataFrame({'normal': np.random.normal(size=100), 'gamma': np.random.gamma(1, size=100), 'poisson': np.random.poisson(size=100)})
+        variables.cumsum(0).plot() - displays three plots on one graph
+    variables.cumsum(0).plot(subplots=True) - splits plots between three graphs
+    Manually using subplots to assign axes - 
+        fig, axes = plt.subplots(nrows=1, ncols=3, figsize=(12, 4))
+        for i,var in enumerate(['normal','gamma','poisson']):
+            variables[var].cumsum(0).plot(ax=axes[i], title=var)
+        axes[0].set_ylabel('cumulative sum')
+        
+Bar plots - 
+    Useful for displaying and comparing measurable qunatities
+        titanic = pd.read_csv("data/titanic.csv")
+        titanic.head()
+    titanic.groupby('pclass').survived.sum().plot(kind='bar')
+    titanic.groupby(['sex','pclass']).survived.sum().plot(kind='barh')
+    death_counts = pd.crosstab([titanic.pclass, titanic.sex], titanic.survived.astype(bool))
+    death_counts.plot(kind='bar', stacked=True, color=['black','gold'], grid=False)
+    death_counts.div(death_counts.sum(1).astype(float), axis=0).plot(kind='barh', stacked=True, color=['black','gold'])
+    
+Histograms	
+    titanic.fare.hist(grid=False)
+    titanic.fare.hist(bins=30)
+    titanic.fare.dropna().plot(kind='kde', xlim=(0,600))
+    titanic.fare.hist(bins=30, normed=True, color='lightseagreen')
+    titanic.fare.dropna().plot(kind='kde', xlim=(0,600), style='r--')
+
+Boxplots	
+    titanic.boxplot(column='fare', by='pclass', grid=False)
+
+Scatterplots
+    baseball = pd.read_csv("data/baseball.csv")
+    baseball.head()
+    plt.scatter(baseball.ab, baseball.h)
+    plt.xlim(0, 700); plt.ylim(0, 200)
+	plt.scatter(baseball.ab, baseball.h, s=baseball.hr*10, alpha=0.5)
+    plt.xlim(0, 700); plt.ylim(0, 200)
+	plt.scatter(baseball.ab, baseball.h, c=baseball.hr, s=40, cmap='hot')
+    plt.xlim(0, 700); plt.ylim(0, 200);
+	_ = pd.scatter_matrix(baseball.loc[:,'r':'sb'], figsize=(12,8), diagonal='kde')
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
