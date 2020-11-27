@@ -1,0 +1,23 @@
+Counties Taken From:
+https://www.geni.com/projects/Counties-of-England-United-Kingdom/9199
+
+Postcodes Taken From:
+https://www.doogal.co.uk/Counties.php
+
+Date of Birth Taken From:
+https://www.random.org/calendar-dates/
+
+Fields Taken From:
+https://www12.statcan.gc.ca/census-recensement/2006/ref/dict/pop063-eng.cfm
+
+10 Major Fields of Study:
+educational, recreational and counselling services; 		- Education
+fine and applied arts; 										- Art
+humanities and related fields; 								- Humanities
+social sciences and related fields; 						- Social Science
+commerce, management and business administration; 			- Business
+agricultural, biological, nutritional, and food sciences; 	- Agriculture
+engineering and applied sciences technologies and trades; 	- Engineering
+health professions and related technologies; 				- Medicine
+and mathematics, 											- Mathematics
+computer and physical sciences. 							- Computing
