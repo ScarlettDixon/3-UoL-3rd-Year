@@ -1,0 +1,15 @@
+Short dataset:
+Importing 			- 	0.23 seconds
+Serial total 		- 	0.031 seconds
+Integer Reduce Add  - 	0.000018240 seconds
+Integer odd-ev sort - 	0.000006080 seconds
+Float Reduce Add    - 	0.000014944 seconds
+Parallel total 		- 	0.000039264 seconds
+
+Long dataset:
+Importing 			- 	23.599 seconds
+Serial total 		- 	2.365 seconds
+Integer Reduce Add  - 	0.001169568 seconds
+Integer odd-ev sort - 	
+Float Reduce Add    - 	
+Parallel total 		- 	
